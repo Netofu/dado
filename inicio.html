@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponza Atrium Scene</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/"
+          }
+        }
+    </script>
     <script type="module">
-        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js';
-        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/GLTFLoader.js';
-        import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/RGBELoader.js';
-        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
         import { GUI } from 'https://cdn.jsdelivr.net/npm/dat.gui/build/dat.gui.module.js';
 
         let renderer, scene, camera, controls, gui;
@@ -27,7 +35,7 @@
             // Carregando um ambiente HDRI para o fundo
             const pmremGenerator = new THREE.PMREMGenerator(renderer);
             new RGBELoader()
-                .load('https://raw.githubusercontent.com/MATA65-ComputacaoGrafica-2024-2/atividade-unidade-ii-Netofu/main/lilienstein_4k.exr', (texture) => {
+                .load('https://raw.githubusercontent.com/MATA65-ComputacaoGrafica-2024-2/atividade-unidade-ii-Netofu/main/lilienstein_4k.hdr', (texture) => {
                     const envMap = pmremGenerator.fromEquirectangular(texture).texture;
                     scene.environment = envMap;
                     scene.background = envMap;
@@ -115,9 +123,6 @@
                 transmission: 0.9,
                 thickness: 0.5,
             });
-            const translucentSphere = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), translucentMaterial);
-            translucentSphere.position.set(-3, 1, 0);
-            scene.add(translucentSphere);
 
             // Espelho dinâmico
             const mirrorGeometry = new THREE.PlaneGeometry(5, 5);
