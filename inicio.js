@@ -50,7 +50,7 @@ function init() {
     // Adicionando o modelo do átrio Sponza
     const loader = new GLTFLoader();
     loader.load(
-        '/Assets/Models/glTF/Sponza-Intel/Sponza.gltf', // Caminho ajustado
+        '/Assets/Models/glTF/Sponza.gltf', // Caminho ajustado
         (gltf) => {
             const sponza = gltf.scene;
             sponza.traverse((child) => {
