@@ -123,9 +123,6 @@
                 transmission: 0.9,
                 thickness: 0.5,
             });
-            const translucentSphere = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), translucentMaterial);
-            translucentSphere.position.set(-3, 1, 0);
-            scene.add(translucentSphere);
 
             // Espelho dinâmico
             const mirrorGeometry = new THREE.PlaneGeometry(5, 5);
