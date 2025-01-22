@@ -35,7 +35,7 @@
             // Carregando um ambiente HDRI para o fundo
             const pmremGenerator = new THREE.PMREMGenerator(renderer);
             new RGBELoader()
-                .load('https://raw.githubusercontent.com/MATA65-ComputacaoGrafica-2024-2/atividade-unidade-ii-Netofu/main/lilienstein_4k.exr', (texture) => {
+                .load('https://raw.githubusercontent.com/MATA65-ComputacaoGrafica-2024-2/atividade-unidade-ii-Netofu/main/lilienstein_4k.hdr', (texture) => {
                     const envMap = pmremGenerator.fromEquirectangular(texture).texture;
                     scene.environment = envMap;
                     scene.background = envMap;
